@@ -9,13 +9,14 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onCommand:quick-log-insert.insertDebugLog"], 
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
+    "keybindings": [
       {
-        "command": "quick-log-insert.helloWorld",
-        "title": "Hello World"
+        "command": "quick-log-insert.insertDebugLog",
+        "key": "ctrl+d",
+        "when": "editorTextFocus"
       }
     ]
   },
