@@ -2,7 +2,13 @@
   "name": "quick-log-insert",
   "displayName": "quick-log-insert",
   "description": "Quickly insert language-specific debug logs with customizable formatting in your code.",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "publisher": "ayush-deotare",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayush03dev/quick-log-insert"
+  },
+  "license": "MIT",
   "engines": {
     "vscode": "^1.93.0"
   },
