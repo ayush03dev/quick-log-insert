@@ -18,7 +18,24 @@
         "key": "ctrl+d",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Quick Log Insert Configuration",
+      "properties": {
+        "quickLogInsert.languageSpecificLogs": {
+          "type": "object",
+          "description": "Customize the log statement for each language.",
+          "scope": "window"
+        },
+        "quickLogInsert.customMessage": {
+          "type": "string",
+          "description": "Customize the default debug message.",
+          "default": "DEBUG: {fileName} - Line Number: {lineNumber}",
+          "scope": "window"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

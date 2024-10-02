@@ -1,78 +1,41 @@
+import * as vscode from 'vscode';
+
 export function getDebugLog(languageId: string, customMessage: string): string {
-    let debugLog: string;
+    // Fetch user configuration for language-specific logs
+    const config = vscode.workspace.getConfiguration();
+    const languageSpecificLogs = config.get<{ [key: string]: string }>('quickLogInsert.languageSpecificLogs', {});
 
-    switch (languageId) {
-        case 'javascript':
-        case 'typescript':
-        case 'typescriptreact':
-        case 'javascriptreact':
-            debugLog = `console.log("${customMessage}");`;
-            break;
-        case 'python':
-            debugLog = `print("${customMessage}")`;
-            break;
-        case 'java':
-            debugLog = `System.out.println("${customMessage}");`;
-            break;
-        case 'csharp':
-            debugLog = `Console.WriteLine("${customMessage}");`;
-            break;
-        case 'ruby':
-            debugLog = `puts("${customMessage}")`;
-            break;
-        case 'php':
-            debugLog = `error_log("${customMessage}");`;
-            break;
-        case 'go':
-            debugLog = `log.Println("${customMessage}")`;
-            break;
-        case 'swift':
-            debugLog = `print("${customMessage}")`;
-            break;
-        case 'kotlin':
-            debugLog = `println("${customMessage}");`;
-            break;
-        case 'rust':
-            debugLog = `println!("${customMessage}");`;
-            break;
-        case 'scala':
-            debugLog = `println("${customMessage}");`;
-            break;
-        case 'html':
-            debugLog = `<!-- ${customMessage} -->`; // HTML comments
-            break;
-        case 'css':
-            debugLog = `/* ${customMessage} */`; // CSS comments
-            break;
-        case 'shellscript':
-        case 'bash':
-            debugLog = `echo "${customMessage}"`;
-            break;
-        case 'objectivec':
-            debugLog = `NSLog(@"${customMessage}");`;
-            break;
-        case 'haskell':
-            debugLog = `putStrLn ("${customMessage}")`;
-            break;
-        case 'elixir':
-            debugLog = `IO.puts("${customMessage}")`;
-            break;
-        case 'dart':
-            debugLog = `print("${customMessage}");`;
-            break;
-        case 'groovy':
-            debugLog = `println("${customMessage}")`;
-            break;
-        case 'lua':
-            debugLog = `print("${customMessage}")`;
-            break;
-        case 'r':
-            debugLog = `cat("${customMessage}")`;
-            break;
-        default:
-            debugLog = `// Log: ${customMessage}`; // Fallback for unsupported languages
-            break;
-    }
+    // Fallback log templates if the user hasn't set any custom configuration
+    const defaultLogs: { [key: string]: string } = {
+        'javascript': 'console.log("{message}");',
+        'python': 'print("{message}")',
+        'java': 'System.out.println("{message}");',
+        'csharp': 'Console.WriteLine("{message}");',
+        'ruby': 'puts("{message}")',
+        'php': 'error_log("{message}");',
+        'go': 'log.Println("{message}")',
+        'swift': 'print("{message}")',
+        'kotlin': 'println("{message}")',
+        'rust': 'println!("{message}");',
+        'scala': 'println("{message}");',
+        'shellscript': 'echo "{message}"',
+        'bash': 'echo "{message}"',
+        'objectivec': 'NSLog(@"{message}");',
+        'haskell': 'putStrLn ("{message}")',
+        'elixir': 'IO.puts("{message}")',
+        'dart': 'print("{message}");',
+        'groovy': 'println("{message}")',
+        'lua': 'print("{message}")',
+        'r': 'cat("{message}")',
+        'html': '<!-- {message} -->', // HTML comments
+        'css': '/* {message} */', // CSS comments
+    };
 
-    return debugLog;
+    // Use the user's log template or the default one if not available
+    const logTemplate = languageSpecificLogs[languageId] || defaultLogs[languageId] || '// Log: {message}';
+
+    // Replace the {message} placeholder with the actual customMessage
+    const finalLog = logTemplate.replace('{message}', customMessage);
+
+    return finalLog;
 }

@@ -4,8 +4,14 @@ import { getCustomMessage } from './config';
 import { Placeholder } from './placeholders';
 
 export function activate(context: vscode.ExtensionContext) {
+	// Create output channel for printing log in console
+	vscode.window.createOutputChannel("quick-log-insert");
+
+	console.log("Extension has been activated!");
+
 	let disposable = vscode.commands.registerCommand('quick-log-insert.insertDebugLog', () => {
 		const editor = vscode.window.activeTextEditor;
+
 		if (editor) {
 			const position = editor.selection.active;
 			const lineNumber = position.line + 1; // Line numbers are 0-based, so add 1
