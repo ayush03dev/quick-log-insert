@@ -2,8 +2,12 @@
 
 All notable changes to the "quick-log-insert" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [1.0.1] - 2024-10-04
+### Added
+- Support for additional programming languages like C, C++, and others.
 
-## [Unreleased]
+### Changed
+- Code improvements for better performance and maintainability.
 
-- Initial release
+## [1.0.0] - 2024-10-04
+- Initial release.

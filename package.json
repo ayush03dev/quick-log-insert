@@ -2,7 +2,7 @@
   "name": "quick-log-insert",
   "displayName": "quick-log-insert",
   "description": "Quickly insert language-specific debug logs with customizable formatting in your code.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "ayush-deotare",
   "repository": {
     "type": "git",

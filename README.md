@@ -37,3 +37,4 @@ You can customize the log message format using the VSCode settings.
      },
      "quickLogInsert.customMessage": "DEBUG: {fileName} - Line Number: {lineNumber}"
    }
+3. You can also define placeholders like {fileName}, {lineNumber}, {language}, {date}, and {time} to automatically populate your logs with relevant information.
