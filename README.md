@@ -12,7 +12,7 @@
 
 ## Installation
 
-1. Download and install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com).
+1. Download and install the extension from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ayush-deotare.quick-log-insert).
 2. Reload or restart VSCode to activate the extension.
 
 ## Usage

@@ -8,6 +8,7 @@ export function getDebugLog(languageId: string, customMessage: string): string {
     // Fallback log templates if the user hasn't set any custom configuration
     const defaultLogs: { [key: string]: string } = {
         'javascript': 'console.log("{message}");',
+        'typescript': 'console.log("{message}");',
         'python': 'print("{message}")',
         'java': 'System.out.println("{message}");',
         'csharp': 'Console.WriteLine("{message}");',
